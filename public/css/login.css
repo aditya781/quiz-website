@@ -85,3 +85,8 @@ input{
     text-align: right;
     margin-top: 10px;
 }
+.error{
+    width: 250px;
+    color: red;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+html,body{
+    display: grid;
+    height: 100%;
+    place-items: center;
+}
+.registerForm{
+    padding: 1px 20px 20px 20px;
+}
+.registerContainer{
+    border-style: solid;
+    border-width: 2px;
+    border-color: #707070;
+    justify-content: center;
+    width: 250px;
+    height: 450px;
+}
+.loginPassword{
+    margin-top: 9px;
+}
+.loginEmail{
+    margin-top: 9px;
+}
+.loginSubmit{
+    background-color: #273239;
+    border-color: #707070;
+    color: white;
+    margin-top: 25px;
+    height: 32px;
+    width: 100%;
+    font-weight: bold;
+    
+    
+}
+
+input{
+   width: 100%;
+   height: 30px;
+}
+
+.registerForm .userRegister{
+    text-align: right;
+    margin-top: 10px;
+    font-size: small;
+    color: #000000;
+    opacity: 40%;
+    font-weight: bold;
+
+}
+.name{
+    margin-top: 30px;
+}
+.error{
+    width: 250px;
+    color: red;
+    margin-bottom: 5px;
+}

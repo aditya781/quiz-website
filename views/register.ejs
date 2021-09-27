@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/register.css">
+    <title>Register</title>
+</head>
+<body>
+   
+    <div class="container">
+        <div class="error">
+            ️⛔ User already exists!
+        </div>
+        <div class="registerContainer">
+            <form class="registerForm" method="POST" action="/register" >
+                <div class="loginEmail name">
+                    <h5>Name</h5>
+                    <input type="text" name="fname"  required>
+                </div>
+                <div class="loginEmail">
+                    <h5>Profession</h5>
+                    <input type="text" name="fprofession"  required>
+                </div>
+                <div class="loginEmail">
+                    <h5>Email</h5>
+                    <input type="email" name="femail"  required>
+                </div>
+                <div class="loginEmail">
+                    <h5>Phone No</h5>
+                    <input type="number" name="Phone"  required>
+                </div>
+                <div class="loginPassword">
+                    <h5>Password</h5>
+                    <input type="password" name="fpassword" required>
+                </div>
+                <input class="loginSubmit" type="submit" value="Register">
+                
+                <a href="/login"><div class="userRegister">Already have an account,<br/> Sign In </div></a>
+                
+            </form>
+            
+    
+        </div>
+       
+    </div>
+    
+
+</body>
+</html>
+
+
+
+
+
+

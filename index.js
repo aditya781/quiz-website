@@ -1,6 +1,7 @@
 const express=require("express");
 const mysql=require("mysql");
 const bodyParser=require("body-parser");
+const { response } = require("express");
 require('dotenv').config();
 
 const app=express();
@@ -31,6 +32,18 @@ db.connect((err)=>{
 
 app.get("/",function(req,res){  
     res.render("login.ejs");
+});
+
+app.get("/login",function(req,res){  
+    res.render("login.ejs");
+});
+app.get("/register",function(req,res){  
+    res.render("register.ejs");
+});
+
+app.post("/register",function(req,res){ 
+    console.log(req.body)
+   
 });
 
 app.listen(process.env.PORT || 3000, function(){
