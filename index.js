@@ -47,8 +47,30 @@ app.get("/register",function(req,res){
     res.render("register.ejs", {regi_error:""});
 });
 
-app.post("/login", function(req,err){
-    res.render("login", {error:"welcome aditya"})
+app.post("/login", function(req,res){
+    //res.render("login", {error:"welcome aditya"})
+    db.query("select admin_email, admin_pass from admin_table where admin_email= ?", [req.body.femail], (error,result)=>{
+        if(error){
+            console.log(error);
+            return;
+        }
+        if(result.length==0){
+            console.log("Please register to login")
+            res.render("login.ejs", {error:"Please register to login."});
+
+        }else{
+            
+            bcrypt.compare(req.body.fpassword, result[0].admin_pass, function(erro, respo){
+                if(respo==true){
+                    res.render("home.ejs")
+                
+                }
+                else{
+                    res.render("login.ejs",{error:"Please enter correct password"});
+                }
+            });
+        }
+    })
 })
 
 app.post("/register",function(req,res){ 
