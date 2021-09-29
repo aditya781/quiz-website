@@ -11,7 +11,7 @@
    
     <div class="container">
         <div class="error">
-            ️⛔ User already exists!
+            <%=regi_error%>
         </div>
         <div class="registerContainer">
             <form class="registerForm" method="POST" action="/register" >
@@ -29,7 +29,7 @@
                 </div>
                 <div class="loginEmail">
                     <h5>Phone No</h5>
-                    <input type="number" name="Phone"  required>
+                    <input type="number" name="fphone"  required>
                 </div>
                 <div class="loginPassword">
                     <h5>Password</h5>
