@@ -14,6 +14,7 @@ const saltRounds=10;
 
 var regi_error=" ";
 var error=" ";
+var adminTempEmail=" "
 
 //getting password from .env file
 let mysqlPass=process.env.MYSQL_PASSWORD;
@@ -62,6 +63,7 @@ app.post("/login", function(req,res){
             
             bcrypt.compare(req.body.fpassword, result[0].admin_pass, function(erro, respo){
                 if(respo==true){
+                    adminTempEmail=result[0].admin_email;
                     res.render("home.ejs")
                 
                 }
@@ -91,12 +93,13 @@ app.post("/register",function(req,res){
                     admin_pass:hash, 
                     admin_phone:req.body.fphone,
                     admin_email:req.body.femail, 
-                    admin_profession:req.body.fprofession}, (error, result)=>{
+                    admin_profession:req.body.fprofession}, (error, resul)=>{
                     if(error){
                         console.log(error);
+                        return;
                     }
-                })
-
+                });
+                adminTempEmail=result[0].admin_email;
                 res.render("home.ejs");
             }
         })
@@ -104,6 +107,30 @@ app.post("/register",function(req,res){
     });
    
 });
+
+
+app.post("/insert_question", (req,res)=>{
+    console.log(req.body)
+    if(adminTempEmail===" "){
+        console.log("plese login to insert");
+        return;
+    }
+    db.query("insert into questions_table set ? ",{
+        question :req.body.fquestion,
+        a  :req.body.fa,
+        b  :req.body.fb,
+        c  :req.body.fc,
+        d  :req.body.fd,
+        answer :req.body.fanswer,
+        admin_email:adminTempEmail
+    },(error,result)=>{
+        if(error){
+            console.log(error)
+            return;
+        }
+        console.log("Inserted successfully")
+    })
+})
 
 app.listen(process.env.PORT || 3000, function(){
     console.log("server started on port 3000");
