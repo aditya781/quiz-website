@@ -22,8 +22,15 @@
                 </div>
                 <div class="loginPassword">
                     <h5>Password</h5>
-                    <input type="password" name="fpassword" required>
+                    <input onkeyup="trigger()" class="fpass" type="password" name="fpassword" required>
                 </div>
+                <!--Password straingth indicator-->
+                <div class="indicator">
+                    <span class="weak"></span>
+                    <span class="medium"></span>
+                    <span class="strong"></span>
+                </div>
+
                 <input class="loginSubmit" type="submit" value="Sign In">
                 <div class="googleLogin">
                     <img src="img/googleIcon.png" alt="">
@@ -37,7 +44,8 @@
         <a href="/register"><div class="userRegister">New User Register-></div></a>
         
     </div>
-    
+
+    <script src="js/login.js"></script>
 
 </body>
 </html>
