@@ -78,7 +78,7 @@ app.post("/login", function(req,res){
 app.post("/register",function(req,res){ 
     console.log(req.body)
     bcrypt.hash(req.body.fpassword, saltRounds, function(err, hash){
-        console.log(hash.length)
+       
         db.query("select admin_email from admin_table where admin_email= ? ", [req.body.femail], (error, result)=>{
             if(error){
                 console.log(error);
@@ -99,7 +99,7 @@ app.post("/register",function(req,res){
                         return;
                     }
                 });
-                adminTempEmail=result[0].admin_email;
+                adminTempEmail=req.body.femail;
                 res.render("home.ejs");
             }
         })

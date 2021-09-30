@@ -59,3 +59,48 @@ input{
     color: red;
     margin-bottom: 5px;
 }
+
+
+
+
+
+
+.indicator{
+    height: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    margin-bottom: -6px;
+    display: none;
+}
+.indicator span{
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+    border-radius: 5px;
+    position: relative;
+    margin: 1px;
+}
+.indicator span .medium{
+    margin: 0 3px;
+}
+.indicator span:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.indicator span.active.weak:before{
+    background-color: #ff4757;
+}
+.indicator span.active.medium:before{
+    background-color: orange;
+}
+.indicator span.active.strong:before{
+    background-color: #23ad5c;
+}
