@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  input, select, textarea {
+    width: 90%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    padding-left: 5px;
+  }
+  .btn {
+    background-color:rgb(49, 6, 119);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1%;
+    margin-left: 25%;
+    width: 50%;
+    
+  }
+  .col-25 {
+    float: left;
+    width: 15%;
+    margin-left: 10px;
+    
+   
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+ 
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    width: 100%;
+  }
+  .container {
+    border-radius: 5px;
+ background-color: lightblue;
+    padding: 20px;
+    margin:100px ;
+  }
+    
