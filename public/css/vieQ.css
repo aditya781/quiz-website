@@ -1,0 +1,114 @@
+/*** FONTS ***/
+@import url(https://fonts.googleapis.com/css?family=Montserrat:900|Raleway:400,400i,700,700i);
+
+
+
+
+/*** STYLE ***/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: white;
+  color: black;
+  font-family: 'Raleway', sans-serif;
+}
+
+main {
+  display: block;
+  margin: 0 auto;
+  max-width: 50rem;
+  padding: 1rem;
+  background-color: lightblue;
+  margin-top: 1rem;
+}
+#ques
+{
+    background: white;
+    border-radius:  0.5rem 0.5rem 0.5rem 0.5rem;
+    box-shadow: 0.25rem 0.25rem 0.6rem rgba(0,0,0,0.05), 0 0.8rem 1.125rem rgba(75,0,0,0.05);
+    margin-top: 1rem;
+    min-height: 3rem;
+    padding: 1rem 1rem 1rem 3rem;
+    position: relative;
+}
+#tag
+{
+    border-radius:  0.5rem 0.5rem 0.5rem 0.5rem;
+    background: rgb(235, 96, 96);
+    color: antiquewhite;
+    float:right;
+    padding: 0.2rem;
+    width: auto;
+}
+#Qid{
+    border-radius:  0.5rem 0.5rem 0.5rem 0.5rem;
+    background: rgb(253, 204, 68);
+    color: black;
+    float:left;
+    padding: 0.2rem;
+    width: auto;
+}
+ul.gradient-list {
+
+  list-style: none;
+  margin: 1.75rem 0;
+  padding-left: 1rem;
+}
+li {
+    background: white;
+    border-radius: 0 0.5rem 0.5rem 0.5rem;
+    box-shadow: 0.25rem 0.25rem 0.6rem rgba(0,0,0,0.05), 0 0.5rem 1.125rem rgba(75,0,0,0.05);
+    margin-top: 1rem;
+    min-height: 3rem;
+    padding: 1rem 1rem 1rem 3rem;
+    position: relative;
+}
+  
+
+ 
+/* Side menu */
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none!important;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }

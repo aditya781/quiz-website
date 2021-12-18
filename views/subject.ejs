@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/vieQ.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Question</title>
+</head>
+<body>
+   
+    <div class="sidenav">
+        <a href="#">Home</a>
+        <a href="#">Practice Test</a>
+        <a href="/viewQues"> View Questions </a>
+        <a href="/login">Admin Login</a>
+      </div>
+    
+    <main>
+       
+        
+        <div class="card" id="ques">
+
+            <div class="card-body">
+              <form action="/subject" method="post">
+                <p>Select the subject:</p>
+              <p><span id="Qid">
+                <select name="fsubject" id="cars">
+                  <option value="Database">Database</option>
+                  <option value="CNSL">CNSL</option>
+                </select>  
+              </span></p>
+              <span id="tag"> <button type="submit" class="btn">Submit</button> </span>
+              </form>
+              
+            </div>
+        </div>
+       
+       <!--
+        <ul class="gradient-list">
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+          <li>Aenean tincidunt elit at ipsum cursus, vitae interdum nulla suscipit.</li>
+          <li>Curabitur in orci vel risus facilisis accumsan.</li>
+          <li>Morbi eleifend tortor lacinia sapien sagittis, quis pellentesque felis egestas.</li>
+          <li>Aenean viverra dui quis leo lacinia fringilla.</li>
+          <li>Sed varius lectus ac condimentum egestas.</li>
+          <li>Maecenas faucibus lorem nec lorem posuere, a rhoncus velit porttitor.</li>
+          <li>Proin porta arcu ac elit malesuada pulvinar.</li>
+          <li>Phasellus vitae felis sit amet mi gravida volutpat.</li>
+          
+        </ul>
+
+
+       --> 
+      </main>
+
+</body>
+</html>

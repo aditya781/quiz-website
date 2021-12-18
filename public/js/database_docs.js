@@ -22,14 +22,13 @@ create table questions_table(
     answer varchar(200),
     admin_email varchar(100) not null,
     primary key(que_id),
-    foreign key (admin_email) references admin_table(admin_email)
+    foreign key (admin_email) references admin_table(admin_email) ON DELETE CASCADE
 );
 
 create table subject_table(
     subject_name varchar(100) not null,
-    que_id int not null,
-    foreign key (que_id) references questions_table(que_id)
+    que_id int not null AUTO_INCREMENT,
+    foreign key (que_id) references questions_table(que_id) ON DELETE CASCADE
 );
 
 */
-
