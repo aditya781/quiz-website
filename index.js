@@ -15,6 +15,7 @@ const saltRounds=10;
 var regi_error=" ";
 var error=" ";
 var adminTempEmail=" "
+var tempemail
 
 //getting password from .env file
 let mysqlPass=process.env.MYSQL_PASSWORD;
@@ -24,7 +25,7 @@ const db=mysql.createConnection({
     host     : "localhost",
     user     : "root",
     password : mysqlPass,
-    database :"quiz_app"
+    database :"copy_quiz_app"
 })
 
 //connection
@@ -36,10 +37,176 @@ db.connect((err)=>{
     console.log("connected");
 })
 
-
 app.get("/",function(req,res){  
-    res.render("login.ejs", {error:" "});
+    db.query("select questions_table.question, questions_table.que_id , questions_table.a, questions_table.b, questions_table.c, questions_table.d, questions_table.answer, subject_table.subject_name from questions_table inner join subject_table on subject_table.que_id=questions_table.que_id",(er,re)=>{
+        if(er){
+            console.log(er);
+            return;
+        }
+        else{
+            //console.log(re)
+            res.render("viewQues.ejs",{item:re})
+        }
+    })
+   
 });
+
+app.get("/subject",function(req,res){  
+  
+    res.render("subject.ejs")
+   
+});
+var ress="";
+
+let ques=[]
+app.post("/subject",function(req,res){
+    console.log("subject= "+req.body.fsubject)  
+    db.query("select questions_table.question, questions_table.a, questions_table.b, questions_table.c, questions_table.d, questions_table.answer, subject_table.subject_name from questions_table inner join subject_table on subject_table.que_id=questions_table.que_id and subject_table.subject_name= ? order by rand()",
+    [req.body.fsubject],(er,re)=>{
+        if(er){
+            console.log(er);
+            return;
+        }else{
+            
+            console.log("re= "+ re)
+            ress=re
+            
+        }
+    })
+    //res.render("index.ejs", {questionsss:ress});
+    setTimeout(function(){ 
+    console.log(ress.length)
+    ques=[]
+    for (var i=0; i<10; i++){
+       if(ress.length>i){
+        var temp={
+            numb:i+1,
+            question: ress[i].question,
+            answer: ress[i].answer,
+            options:[
+                ress[i].a,
+                ress[i].b,
+                ress[i].c,
+                ress[i].d
+            ]
+            }
+            ques.push(temp);
+       }else{
+           break;
+       }
+    }
+    console.log(ques)
+    res.render("index.ejs")
+    }, 3000);
+    
+});
+
+app.get("/hi",function(req,res){  
+   
+    res.send(ques)
+});
+ress=[]
+app.get("/addques",function(req,res){ 
+    tempemail=adminTempEmail 
+    //adminTempEmail=" "
+    if(adminTempEmail!=" "){
+        db.query("select * from questions_table where admin_email= ?",[adminTempEmail],(er,re)=>{
+            if(er){
+                console.log(er);
+                return;
+            }else{
+                console.log(adminTempEmail)
+                ress=re
+                //res.json(ress)
+            }
+        })
+    }
+    res.render("addques.ejs",{errors:"", invItems:ress});
+});
+
+app.get("/addq",function(req,res){  
+    
+    if(adminTempEmail!=" "){
+        setTimeout(function(){
+        db.query("select * from questions_table where admin_email= ?",[adminTempEmail],(er,re)=>{
+            if(er){
+                console.log(er);
+                return;
+            }else{
+                console.log("wating= "+adminTempEmail)
+                ress=re
+                //res.json(ress)
+            }
+            res.render("addques.ejs",{errors:"", invItems:ress});
+        })},3000)
+        
+    }
+    else{
+        res.render("addques.ejs",{errors:"", invItems:ress});
+    }
+});
+
+app.get("/test",(req,res)=>{
+    db.query("select * from questions_table",(er,re)=>{
+        if(er){
+            console.log(er);
+            return;
+        }else{
+            //console.log(re[0].question)
+            ress={re}
+            res.json(ress)
+        }
+    })
+})
+app.get("/tt",(req,res)=>{
+    res.render("index.ejs")
+})
+
+app.get("/viewQues",(req,res)=>{
+    
+    db.query("select questions_table.question, questions_table.que_id , questions_table.a, questions_table.b, questions_table.c, questions_table.d, questions_table.answer, subject_table.subject_name from questions_table inner join subject_table on subject_table.que_id=questions_table.que_id",(er,re)=>{
+        if(er){
+            console.log(er);
+            return;
+        }
+        else{
+            //console.log(re)
+            res.render("viewQues.ejs",{item:re})
+        }
+    })
+})
+
+app.get("/database",(req,res)=>{
+    
+    db.query("select questions_table.question, questions_table.que_id , questions_table.a, questions_table.b, questions_table.c, questions_table.d, questions_table.answer, subject_table.subject_name from questions_table inner join subject_table on subject_table.que_id=questions_table.que_id and subject_table.subject_name= ? ",
+    ["Database"],(er,re)=>{
+        if(er){
+            console.log(er);
+            return;
+        }
+        else{
+            //console.log(re)
+            res.render("viewQues.ejs",{item:re})
+        }
+    })
+})
+
+
+
+app.get("/CNSL",(req,res)=>{
+    
+    db.query("select questions_table.question, questions_table.que_id , questions_table.a, questions_table.b, questions_table.c, questions_table.d, questions_table.answer, subject_table.subject_name from questions_table inner join subject_table on subject_table.que_id=questions_table.que_id and subject_table.subject_name= ? ",
+    ["CNSL"],(er,re)=>{
+        if(er){
+            console.log(er);
+            return;
+        }
+        else{
+            //console.log(re)
+            res.render("viewQues.ejs",{item:re})
+        }
+    })
+})
 
 app.get("/login",function(req,res){  
     res.render("login.ejs", {error:""});
@@ -64,7 +231,21 @@ app.post("/login", function(req,res){
             bcrypt.compare(req.body.fpassword, result[0].admin_pass, function(erro, respo){
                 if(respo==true){
                     adminTempEmail=result[0].admin_email;
-                    res.render("home.ejs")
+                    if(adminTempEmail!=" "){
+                        
+                        db.query("select * from questions_table where admin_email= ?",[adminTempEmail],(er,re)=>{
+                            if(er){
+                                console.log(er);
+                                return;
+                            }else{
+                                console.log(re)
+                                ress=re
+                                //res.json(ress)
+                            }
+                        })
+                    }
+                    setTimeout(function(){
+                    res.render("addques.ejs",{errors:"",invItems:ress})},2000);
                 
                 }
                 else{
@@ -100,7 +281,7 @@ app.post("/register",function(req,res){
                     }
                 });
                 adminTempEmail=req.body.femail;
-                res.render("home.ejs");
+                res.render("addques.ejs",{errors:"User ragister successfull!",invItems:" "});
             }
         })
             
@@ -108,13 +289,15 @@ app.post("/register",function(req,res){
    
 });
 
-
-app.post("/insert_question", (req,res)=>{
+var temperrors=""
+app.post("/addques", (req,res)=>{
     console.log(req.body)
     if(adminTempEmail===" "){
         console.log("plese login to insert");
-        return;
-    }
+         temperrors="Plese login to insert!!"
+         res.render("addques.ejs",{errors:temperrors, invItems:" "})
+        
+    }else{
     db.query("insert into questions_table set ? ",{
         question :req.body.fquestion,
         a  :req.body.fa,
@@ -130,7 +313,71 @@ app.post("/insert_question", (req,res)=>{
         }
         console.log("Inserted successfully")
     })
+
+    db.query("insert into subject_table set ? ",{
+        subject_name:req.body.fcourse
+
+    },(er,re)=>{
+        if(er){
+            console.log(er);
+            return;
+        }
+        console.log("Inserted successfully 2;")
+        temperrors="Inserted Successfully"
+
+        if(adminTempEmail!=" "){
+                        
+            db.query("select * from questions_table where admin_email= ?",[adminTempEmail],(er,re)=>{
+                if(er){
+                    console.log(er);
+                    return;
+                }else{
+                    console.log(re)
+                    ress=re
+                    //res.json(ress)
+                }
+            })
+        }
+        setTimeout(function(){
+        res.render("addques.ejs",{errors:"Inserted Successfully", invItems:ress})},2000);
+        
+    })
+    }
+    
 })
+
+
+
+
+
+
+app.get("/deleteItem/:id",function(req,res){  
+    
+    db.query("delete from questions_table where que_id= ? ",
+    [req.params.id],(er,re)=>{
+        if(er){
+            console.log(er);
+            return;
+        }
+        else{
+            //console.log(re)
+            setTimeout(function(){ 
+            res.redirect("/addq")},1000)
+        }
+    })
+});
+
+
+
+
+app.get("/logout",function(req,res){  
+    
+   adminTempEmail=" ";
+   res.redirect("/")
+    
+});
+
+
 
 app.listen(process.env.PORT || 3000, function(){
     console.log("server started on port 3000");

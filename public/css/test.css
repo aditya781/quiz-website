@@ -1,0 +1,237 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+body{
+    background-color: #F2F7FF;
+    
+}
+
+
+.container{
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 4fr 1fr ;
+    grid-template-rows: 1fr 12fr;
+    grid-template-areas: 
+        "nav nav nav"
+        "sidebar1 main sidebar2" ;
+    grid-gap: 2rem;
+}
+
+nav{
+    grid-area: nav;
+    background-color: white;
+}
+#sidebar1{
+    background: #F2F7FF;
+    grid-area: sidebar1;
+    margin-left: 20px;
+}
+#sidebar2{
+    background: #F2F7FF;
+    grid-area: sidebar2;
+    margin-right: 20px;
+}
+main{
+    background: #F2F7FF;
+    grid-area: main;
+}
+.logo{
+    height: 50px;
+    width: auto;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.search-container{
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+    width: 300px;
+    height: 35px;
+    background-color: #ECECEC;
+    opacity: 86%;
+}
+.search-container input{
+    outline: none;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 230px;
+    
+}
+.searchLogo{
+    float: right;
+    width: auto;
+    height:23px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+.signin-container{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    margin: auto;
+    border-radius: 15px;
+    text-align: center;
+}
+.SignIn{
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    margin: auto;
+    background-color: #273239;
+    border-color: #707070;
+    text-align: center;
+    margin-top: 10px;
+}
+.SignIn span{
+    color: white;
+    align-self: center;
+    margin: auto;
+    position: relative;
+    top: 33%;
+}
+main .question{
+    background-color: white;
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 15px;
+   
+}
+.left-sidebar{
+    width: 100%;
+    margin-right: 50px;
+    height: 400px;
+    margin: auto;
+    background-color: white;
+    border-radius: 15px;
+}
+main .question-bar{
+    background-color: white;
+    width: 100%;
+    height: 50px;
+    margin: auto;
+    border-radius: 15px;
+}
+.admin{
+    margin-top: 10px;
+    margin: auto;
+}
+.sub-question{
+    margin-top: -35px;
+    margin-left: 80px;
+    float: left;
+    position: relative;
+    /* font-size: xx-large; */
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: justify;
+    margin-right: 3rem;
+    font-family: 'Poppins', sans-serif;
+}
+.box-img{
+    width: 30px;
+    height: auto;
+    margin-top: 40px;
+    margin-left: 40px;
+    float: left;
+    
+}
+.practice{
+    position: relative;
+    margin: 6px;
+    /* position: relative; */
+    padding: 20px;
+    margin-top: 0px;
+}
+ul {
+    list-style-type: none;
+ }
+ .practice span{
+    font-family: 'Poppins', sans-serif;
+ }
+
+
+
+@media only screen and (max-width:650px){
+    .container{
+        display: grid;
+        height: 100vh;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr ;
+        grid-template-areas: 
+        "nav"
+        "main"
+        "sidebar2";
+        grid-gap: 0rem;
+    }
+    nav{
+        grid-area: nav;
+        background-color: white;
+    }
+    #sidebar1{
+        background: #F2F7FF;
+        grid-area: sidebar1;
+        margin-left: 0px;
+    }
+    #sidebar2{
+        background: #F2F7FF;
+        grid-area: sidebar2;
+        margin-right: 0px;
+    }
+    main{
+        background: #F2F7FF;
+        grid-area: main;
+    }
+    .logo{
+        height: 50px;
+        width: auto;
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+    .search-container{
+       
+    }
+    .search-container input{
+        
+        
+    }
+    .searchLogo{
+        
+    }
+    main .question-bar{
+        background-color: white;
+        width: 95%;
+        height: 50px;
+        margin: auto;
+        border-radius: 15px;
+        margin-top: 20px;
+    }
+    main .question{
+        background-color: white;
+        width: 95%;
+        height: 500px;
+        margin: auto;
+        margin-top: 20px;
+        border-radius: 15px;
+       
+    }
+    .signin-container{
+        width: 95%;
+        height: 100px;
+        background-color: white;
+        margin: auto;
+        border-radius: 15px;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    .left-sidebar{
+        width:0;
+    }
+}

@@ -6,9 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/vieQ.css">
-    <link rel="stylesheet" href="css/Sample.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/quiz2.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Question</title>
 </head>
@@ -16,35 +13,31 @@
    
     <div class="sidenav">
         <a href="#">Home</a>
-        <a href="/subject">Practice Test</a>
-
-
-        <button class="dropdown-btn">Subjects
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-          <a href="/database">Database</a>
-          <a href="/CNSL">CNSL</a>
-        </div>
-
-        <a href="/"> View Questions </a>
+        <a href="#">Practice Test</a>
+        <a href="/viewQues"> View Questions </a>
         <a href="/login">Admin Login</a>
-       
       </div>
     
     <main>
        
-        <% for(var i=0; i<item.length; i++){%>
-
+        
         <div class="card" id="ques">
 
             <div class="card-body">
-              <p><%= item[i].question %> </p>
-              <p><span id="Qid"><%= item[i].subject_name %> </span></p>
-              <span id="tag"> Ans:<%=item[i].answer  %>  </span>
+              <form action="/subject" method="post">
+                <p>Select the subject:</p>
+              <p><span id="Qid">
+                <select name="fsubject" id="cars">
+                  <option value="Database">Database</option>
+                  <option value="CNSL">CNSL</option>
+                </select>  
+              </span></p>
+              <span id="tag"> <button type="submit" class="btn">Submit</button> </span>
+              </form>
+              
             </div>
         </div>
-        <% } %> 
+       
        <!--
         <ul class="gradient-list">
           <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -62,6 +55,6 @@
 
        --> 
       </main>
-      <script src="js/Sample.js"></script>
+
 </body>
 </html>
